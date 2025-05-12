@@ -15,23 +15,21 @@ public class BankTransactionAnalyzer {
     final Path path = Paths.get(RESOURCES + fileName);
     final List<String> lines = Files.readAllLines(path);
 
-    List<BankTransaction> bankTransactions = 
-      bankStatementCSVParser.parseLinesFrom(lines);
+    List<BankTransaction> bankTransactions = bankStatementCSVParser.parseLinesFrom(lines);
 
-    final BankStatementProcessor bankStatementProcessor = 
-      new BankStatementProcessor(bankTransactions);
+    final BankStatementProcessor bankStatementProcessor = new BankStatementProcessor(bankTransactions);
 
     collectSummary(bankStatementProcessor);
   }
 
   private static void collectSummary(final BankStatementProcessor bankStatementProcessor) {
-        System.out.println("The total for all transactions is " + 
-            bankStatementProcessor.calculateTotalAmount());
+    System.out.println("The total for all transactions is " +
+        bankStatementProcessor.calculateTotalAmount());
 
-        System.out.println("The total for transactions in January is " +
-            bankStatementProcessor.selectInMonth(Month.JANUARY));
+    System.out.println("The total for transactions in January is " +
+        bankStatementProcessor.selectInMonth(Month.JANUARY));
 
-        System.out.println("The total salary received is " + 
-            bankStatementProcessor.calculateTotalForCategory("Salary"));
+    System.out.println("The total salary received is " +
+        bankStatementProcessor.calculateTotalForCategory("Salary"));
   }
 }

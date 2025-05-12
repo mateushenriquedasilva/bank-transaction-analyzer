@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BankStatementCSVParser implements BankStatementParser {
-    private static final DateTimeFormatter DATE_PATTERN = 
-        DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     @Override
     public BankTransaction parserFrom(final String line) {
@@ -23,7 +22,7 @@ public class BankStatementCSVParser implements BankStatementParser {
     @Override
     public List<BankTransaction> parseLinesFrom(final List<String> lines) {
         final List<BankTransaction> bankTransactions = new ArrayList<>();
-        for(final String line: lines) {
+        for (final String line : lines) {
             bankTransactions.add(parserFrom(line));
         }
 
